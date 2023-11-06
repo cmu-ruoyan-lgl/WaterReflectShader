@@ -208,7 +208,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 1,
+      "y": 42.532,
       "z": 1000
     },
     "_lrot": {
@@ -332,7 +332,7 @@
     "_priority": 3,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 671.3652275379229,
+    "_orthoHeight": 973.8156359393232,
     "_near": 0,
     "_far": 2000,
     "_color": {
@@ -561,7 +561,7 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "2004f725-3d45-433c-8879-69f006c4fd63@f9941",
+      "__uuid__": "a72ed79b-b650-442f-b58a-163570350c49@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 0,
@@ -666,7 +666,7 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "2004f725-3d45-433c-8879-69f006c4fd63@f9941",
+      "__uuid__": "a72ed79b-b650-442f-b58a-163570350c49@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 0,
@@ -771,7 +771,7 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "2004f725-3d45-433c-8879-69f006c4fd63@f9941",
+      "__uuid__": "a72ed79b-b650-442f-b58a-163570350c49@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 0,
@@ -835,7 +835,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": -150,
-      "y": 12,
+      "y": 187.712,
       "z": 0
     },
     "_lrot": {
@@ -1190,7 +1190,7 @@
         "__id__": 40
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 44
@@ -1570,7 +1570,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -93,
+      "y": -96.879,
       "z": 0
     },
     "_lrot": {
@@ -1709,8 +1709,8 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0,
-      "y": -62,
+      "x": -6.389999999999986,
+      "y": 76.399,
       "z": 0
     },
     "_lrot": {
@@ -1808,8 +1808,8 @@
     "__prefab": null,
     "_alignFlags": 40,
     "_target": null,
-    "_left": 0,
-    "_right": 0,
+    "_left": -6.390000000000006,
+    "_right": 6.390000000000006,
     "_top": 0,
     "_bottom": 0,
     "_horizontalCenter": 0,
@@ -1854,7 +1854,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 0,
+      "y": 63.89500000000004,
       "z": 0
     },
     "_lrot": {
@@ -2790,8 +2790,8 @@
     "_target": null,
     "_left": 0,
     "_right": 0,
-    "_top": 0,
-    "_bottom": 0,
+    "_top": -63.89500000000003,
+    "_bottom": 63.89500000000003,
     "_horizontalCenter": 0,
     "_verticalCenter": 0,
     "_isAbsLeft": true,

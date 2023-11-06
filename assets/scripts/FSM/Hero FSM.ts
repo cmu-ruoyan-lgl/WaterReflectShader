@@ -35,7 +35,7 @@ export default class HeroFSM extends BhvFSM {
     private cam:Node =null
     private isJumping:boolean = false;
 
-    jumpHeight = 200 // 跳跃高度 //init 12
+    jumpHeight = 200 // 跳跃高度 //init 187
     jumpSpeed = 0 // 跳跃速度
     gravity = -1700 // 重力
     jumpCount = 0 // 跳跃次数
@@ -121,8 +121,8 @@ export default class HeroFSM extends BhvFSM {
             _v3.set(this.node.position);
             _v3.y += this.jumpSpeed * this.dt; // 根据跳跃速度更新节点位置
             
-            if (_v3.y <= 12) {
-                _v3.y = 12;
+            if (_v3.y <= 187) {
+                _v3.y = 187;
                 this.isJumping = false;
                 this.jumpSpeed = 0;
                 console.log("jump end");
@@ -154,8 +154,8 @@ export default class HeroFSM extends BhvFSM {
             _v3.set(this.node.position);
             _v3.y += this.jumpSpeed * this.dt; // 根据跳跃速度更新节点位置
             
-            if (_v3.y <= 12) {
-                _v3.y = 12;
+            if (_v3.y <= 187) {
+                _v3.y = 187;
                 this.isJumping = false;
                 this.jumpSpeed = 0;
                 console.log("jump end");
@@ -189,8 +189,8 @@ export default class HeroFSM extends BhvFSM {
             _v3.set(this.node.position);
             _v3.y += this.jumpSpeed * this.dt; // 根据跳跃速度更新节点位置
             
-            if (_v3.y <= 12) {
-                _v3.y = 12;
+            if (_v3.y <= 187) {
+                _v3.y = 187;
                 this.isJumping = false;
                 this.jumpSpeed = 0;
                 console.log("jump end");
