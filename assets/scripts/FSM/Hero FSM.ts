@@ -37,22 +37,46 @@ export default class HeroFSM extends BhvFSM {
 
     jumpHeight = 200 // 跳跃高度 //init 12
     jumpSpeed = 0 // 跳跃速度
-    gravity = -1000 // 重力
+    gravity = -1700 // 重力
     jumpCount = 0 // 跳跃次数
     startPos: Vec3;
     endPos: Vec3;
 
     onLoad(){
         systemEvent.on(SystemEvent.EventType.KEY_DOWN,this.onKeyDown,this);
+        systemEvent.on(SystemEvent.EventType.KEY_UP,this.onKeyUp,this);
     }
 
     onDestroy() {
         systemEvent.off(SystemEvent.EventType.KEY_DOWN,this.onKeyDown,this);
+        systemEvent.off(SystemEvent.EventType.KEY_UP,this.onKeyUp,this);
     }
 
     onKeyDown(e){
+        
+        switch(e.keyCode){
+            case macro.KEY.a:
+                this.changeState(STATE.WalkLeft);
+                break;
+            case macro.KEY.d:
+                this.changeState(STATE.WalkRight);
+                break;
+            case macro.KEY.w:
+                this.jump();
+                break;
+        }
+
         if(e.keyCode==macro.KEY.space){
             this.jump();
+        }
+    }
+
+    onKeyUp(e) {
+        switch (e.keyCode) {
+            case macro.KEY.a:
+            case macro.KEY.d:
+                this.changeState(STATE.Idle);
+                break;
         }
     }
 
@@ -61,28 +85,7 @@ export default class HeroFSM extends BhvFSM {
         if(this.isJumping) return;
         console.log("jump start");
         this.isJumping = true;
-        this.jumpSpeed = 500;
-
-        // 跳跃上升
-        // this.startPos = this.node.position; // 记录跳跃起始位置
-        // this.endPos = new Vec3(this.startPos.x, this.startPos.y + this.jumpHeight, this.startPos.z);
-        // const tweenUp = new Tween(this.node)
-        //     .to(this.jumpDuration / 2, { position: this.startPos }, { easing: 'sineOut' });
-            
-        // // 下落
-        // const tweenDown = new Tween(this.node)
-        //     .to(this.jumpDuration / 2, { position: this.endPos }, { easing: 'sineIn' })
-        //     .call(() => {
-        //         this.isJumping = false;
-        //     });
-        // // 创建缓动队列
-        // const tween = new Tween(this.node)
-        //     .then(tweenUp)
-        //     .then(tweenDown)
-        //     // .sequence(tweenUp, tweenDown)
-        //     .start();
-
-
+        this.jumpSpeed = 600;
     }
 
     start(){
