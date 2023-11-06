@@ -35,8 +35,9 @@ export default class HeroFSM extends BhvFSM {
     private cam:Node =null
     private isJumping:boolean = false;
 
-    jumpHeight = 200 // 跳跃高度
-    jumpDuration = 0.6 // 跳跃持续时间
+    jumpHeight = 200 // 跳跃高度 //init 12
+    jumpSpeed = 0 // 跳跃速度
+    gravity = -1000 // 重力
     jumpCount = 0 // 跳跃次数
     startPos: Vec3;
     endPos: Vec3;
@@ -51,7 +52,6 @@ export default class HeroFSM extends BhvFSM {
 
     onKeyDown(e){
         if(e.keyCode==macro.KEY.space){
-            console.log("jump Space");
             this.jump();
         }
     }
@@ -59,26 +59,28 @@ export default class HeroFSM extends BhvFSM {
     jump(){
         // this.changeState(STATE.Jump);
         if(this.isJumping) return;
-        console.log("jump");
+        console.log("jump start");
         this.isJumping = true;
+        this.jumpSpeed = 500;
+
         // 跳跃上升
-        this.startPos = this.node.position; // 记录跳跃起始位置
-        this.endPos = new Vec3(this.startPos.x, this.startPos.y + this.jumpHeight, this.startPos.z);
-        const tweenUp = new Tween(this.node)
-            .to(this.jumpDuration / 2, { position: this.startPos }, { easing: 'sineOut' });
+        // this.startPos = this.node.position; // 记录跳跃起始位置
+        // this.endPos = new Vec3(this.startPos.x, this.startPos.y + this.jumpHeight, this.startPos.z);
+        // const tweenUp = new Tween(this.node)
+        //     .to(this.jumpDuration / 2, { position: this.startPos }, { easing: 'sineOut' });
             
-        // 下落
-        const tweenDown = new Tween(this.node)
-            .to(this.jumpDuration / 2, { position: this.endPos }, { easing: 'sineIn' })
-            .call(() => {
-                this.isJumping = false;
-            });
-        // 创建缓动队列
-        const tween = new Tween(this.node)
-            .then(tweenUp)
-            .then(tweenDown)
-            // .sequence(tweenUp, tweenDown)
-            .start();
+        // // 下落
+        // const tweenDown = new Tween(this.node)
+        //     .to(this.jumpDuration / 2, { position: this.endPos }, { easing: 'sineIn' })
+        //     .call(() => {
+        //         this.isJumping = false;
+        //     });
+        // // 创建缓动队列
+        // const tween = new Tween(this.node)
+        //     .then(tweenUp)
+        //     .then(tweenDown)
+        //     // .sequence(tweenUp, tweenDown)
+        //     .start();
 
 
     }
@@ -109,7 +111,22 @@ export default class HeroFSM extends BhvFSM {
 
     onIdleUpdate() {
      
+        if (this.isJumping) {
+            this.jumpSpeed += this.gravity * this.dt; // 根据重力更新跳跃速度
+            console.log("jumpSpeed",this.jumpSpeed);
+            console.log("dt",this.dt);
+            _v3.set(this.node.position);
+            _v3.y += this.jumpSpeed * this.dt; // 根据跳跃速度更新节点位置
+            
+            if (_v3.y <= 12) {
+                _v3.y = 12;
+                this.isJumping = false;
+                this.jumpSpeed = 0;
+                console.log("jump end");
+            }
 
+            this.node.setPosition(_v3);
+        }
     }
 
 
@@ -127,6 +144,22 @@ export default class HeroFSM extends BhvFSM {
 
         // this.startPos.x -= this.speed;
         // this.endPos.x -= this.speed;
+        if (this.isJumping) {
+            this.jumpSpeed += this.gravity * this.dt; // 根据重力更新跳跃速度
+            console.log("jumpSpeed",this.jumpSpeed);
+            console.log("dt",this.dt);
+            _v3.set(this.node.position);
+            _v3.y += this.jumpSpeed * this.dt; // 根据跳跃速度更新节点位置
+            
+            if (_v3.y <= 12) {
+                _v3.y = 12;
+                this.isJumping = false;
+                this.jumpSpeed = 0;
+                console.log("jump end");
+            }
+
+            this.node.setPosition(_v3);
+        }
 
         _v2.set(this.cam.position);
         const dis =_v2.x-_v1.x;
@@ -144,11 +177,25 @@ export default class HeroFSM extends BhvFSM {
         _v1.set(this.node.position);
         _v1.x +=this.speed;
         if(_v1.x>1700) return
+        this.node.setPosition(_v1);
 
         // this.startPos.x += this.speed;
         // this.endPos.x += this.speed;
+        if (this.isJumping) {
+            this.jumpSpeed += this.gravity * this.dt; // 根据重力更新跳跃速度
+            _v3.set(this.node.position);
+            _v3.y += this.jumpSpeed * this.dt; // 根据跳跃速度更新节点位置
+            
+            if (_v3.y <= 12) {
+                _v3.y = 12;
+                this.isJumping = false;
+                this.jumpSpeed = 0;
+                console.log("jump end");
+            }
 
-        this.node.setPosition(_v1);
+            this.node.setPosition(_v3);
+        }
+
         _v2.set(this.cam.position);
         const dis =_v1.x-_v2.x;
         if(dis>_camDis) _v2.x = _v1.x-_camDis;

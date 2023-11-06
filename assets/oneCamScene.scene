@@ -182,7 +182,10 @@
     "_iso": 0,
     "_screenScale": 1,
     "_visibility": 524288,
-    "_targetTexture": null,
+    "_targetTexture": {
+      "__uuid__": "7e01f99c-21f8-4653-bcd3-f1dbcff6cd18",
+      "__expectedType__": "cc.RenderTexture"
+    },
     "_cameraType": -1,
     "_trackingType": 0,
     "_id": "ffockOWZRH3bQFcXsxK2Ai"
