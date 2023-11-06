@@ -97,14 +97,11 @@ export default class HeroFSM extends BhvFSM {
         this.addStates(STATE);
         HeroFSM.ins=this;
         this.changeState(STATE.Idle);
-
-
     }
 
     onDisable(){
         this.RemoveAllState()
         HeroFSM.ins=null;
-
     }
 
     onIdleEnter() {
