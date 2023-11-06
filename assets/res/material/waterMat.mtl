@@ -41,9 +41,9 @@
       },
       "waveSpeed": 0.13,
       "waveStrenth": 0.015,
-      "causticStrength": 0.3,
-      "causticScale": 0.65,
-      "causticSpeed": 0.08,
+      "causticStrength": 0.28,
+      "causticScale": 0.64,
+      "causticSpeed": 0.03,
       "causticRGBSplit": 0.5,
       "causticColor": {
         "__type__": "cc.Color",
